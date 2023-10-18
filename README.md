@@ -1,9 +1,13 @@
 # Stable-Matching
 Comparing brute force approach and Gale Shapley algorithm for stable matching
 
+Preference matrix of both Men and Women
+<img width="851" alt="Screenshot 2023-10-17 at 8 25 44 PM" src="https://github.com/KishorekumarBS/Stable-Matching/assets/69570231/9906ce90-3c05-478c-ad66-73e3ff6ce9f3">
+
+
 ## Brutte force:
 ### i. is_stable Function:
-•	The is_stable function checks whether a given matching (a pairing of men and women) is stable or not.<br>
+>•	The is_stable function checks whether a given matching (a pairing of men and women) is stable or not.<br>
 >•	It takes three arguments:<br>
 >>•	matching: A list that represents the current matching, where the index of each element corresponds to a man, and the value at that index corresponds to the woman he is matched with.<br>
 >>•	men_prefs: The preference matrix for men.<br>
@@ -13,12 +17,12 @@ Comparing brute force approach and Gale Shapley algorithm for stable matching
 •	If such a preference inversion exists for any pair, the matching is considered unstable, and the function returns False. Otherwise, it returns True to indicate that the matching is stable.<br>
 
 ### ii. find_all_possible_matchings Function:
-•	The find_all_possible_matchings function generates all possible matchings of men and women based on permutations of men.<br>
-•	It initializes an empty list all_possible_matchings to store the generated matchings.<br>
-•	It uses itertools.permutations to generate all possible permutations of the indices of men (0 to N-1), where N is the number of men.<br>
-•	For each permutation, it creates a matching by pairing the men with women in the order specified by the permutation.<br>
-•	The generated matching is added to the all_possible_matchings list.<br>
-•	Finally, it returns the list of all possible matchings.<br>
+>•	The find_all_possible_matchings function generates all possible matchings of men and women based on permutations of men.<br>
+>•	It initializes an empty list all_possible_matchings to store the generated matchings.<br>
+>•	It uses itertools.permutations to generate all possible permutations of the indices of men (0 to N-1), where N is the number of men.<br>
+>•	For each permutation, it creates a matching by pairing the men with women in the order specified by the permutation.<br>
+>•	The generated matching is added to the all_possible_matchings list.<br>
+>•	Finally, it returns the list of all possible matchings.<br>
 
 ## 2.	Time Complexity of brute force code:
 >i.	Generating Permutations of Men:<br>
@@ -34,16 +38,16 @@ Comparing brute force approach and Gale Shapley algorithm for stable matching
 >>•	Total Time Complexity = O(n!) * O(n^2) = O(n! * n^2)<br>
 
 ### Output Screenshot:
-After seeing the number of operations, it takes to find the stable match, brute force the worst option to find the stable matching.<br>
+>After seeing the number of operations, it takes to find the stable match, brute force the worst option to find the stable matching.<br>
 <img width="215" alt="image" src="https://github.com/KishorekumarBS/Stable-Matching/assets/69570231/2fce6a36-a472-4689-af1f-ab8ba71fb1e2"><br>
 
 ## Gale Shapley:
 ### i.	Initialization:
-•	Calculating the total number of men and women (n) based on the length of the preference lists.<br>
-•	Initializing two lists, men_status and women_status, to represent the current status of men and women. -1 in these lists means that the person is free.<br>
-•	Initializing a list proposal to keep track of how many women each man has proposed to.<br>
+>•	Calculating the total number of men and women (n) based on the length of the preference lists.<br>
+>•	Initializing two lists, men_status and women_status, to represent the current status of men and women. -1 in these lists means that the person is free.<br>
+>•	Initializing a list proposal to keep track of how many women each man has proposed to.<br>
 ### ii.	While Loop:
-•	The while loop runs until there are no free men left (-1 in men_status checks for this). =>worstcase: O(n)<br>
+>•	The while loop runs until there are no free men left (-1 in men_status checks for this). =>worstcase: O(n)<br>
 >•	For each man (indexed by man) in the loop:<br>
 >>•	Check if the man is free (men_status[man] == -1).<br>
 >>•	If the man is free, find the woman he wants to propose to from his preference list using proposals[man] as an index.<br>
